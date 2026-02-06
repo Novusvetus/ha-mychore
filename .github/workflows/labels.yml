@@ -7,8 +7,16 @@ on:
     paths:
       - .github/labels.yml
       - .github/workflows/labels.yml
+  pull_request:
+    paths:
+      - .github/labels.yml
+      - .github/workflows/labels.yml
   schedule:
-    - cron: "0 3 * * *"
+    - cron: "0 7 * * 5"
+
+permissions:
+  contents: read
+  issues: write
 
 jobs:
   labels:
@@ -17,7 +25,12 @@ jobs:
     steps:
       - name: ⤵️ Check out code from GitHub
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
       - name: 🚀 Run Label Syncer
-        uses: micnncim/action-label-syncer@v1.3.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: crazy-max/ghaction-github-labeler@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          yaml-file: .github/labels.yml
+          dry-run: ${{ github.event_name == 'pull_request' }}

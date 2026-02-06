@@ -1,92 +1,120 @@
 ---
-- name: "breaking change"
-  color: ee0701
-  description: "A breaking change for existing users."
+# Type of the issue/PR
 - name: "bug"
-  color: ee0701
-  description: "Inconsistencies or issues which will cause a problem for users or implementors."
+  color: "#d73a4a"
+  description: "Something went boom 💥 - needs fixing before it bites users."
 - name: "documentation"
-  color: 0052cc
-  description: "Solely about the documentation of the project."
+  color: "#0366d6"
+  description: "Words, diagrams, and magic spells that explain the project."
 - name: "enhancement"
-  color: 1d76db
-  description: "Enhancement of the code, not introducing new features."
+  color: "#28a745"
+  description: "Polishing the code until it shines, without adding new tricks."
 - name: "refactor"
-  color: 1d76db
-  description: "Improvement of existing code, not introducing new features."
+  color: "#28a745"
+  description: "Rearranging the furniture in code-land - same house, better layout."
 - name: "performance"
-  color: 1d76db
-  description: "Improving performance, not introducing new features."
+  color: "#28a745"
+  description: "Making things faster, smoother, stronger. Cue epic soundtrack."
 - name: "new feature"
-  color: 0e8a16
-  description: "New features or options."
+  color: "#28a745"
+  description: "Fresh functionality - shiny new toys for our users."
 - name: "maintenance"
-  color: 2af79e
-  description: "Generic maintenance tasks."
+  color: "#a2eeef"
+  description: "Taking out the trash, sweeping the floors, oiling the gears."
 - name: "ci"
-  color: 1d76db
-  description: "Work that improves the continue integration."
+  color: "#0366d6"
+  description: "Making the robots work smarter, not harder (Continuous Integration)."
 - name: "dependencies"
-  color: 1d76db
-  description: "Upgrade or downgrade of project dependencies."
+  color: "#0366d6"
+  description: "Keeping our friends up to date - or telling old ones to leave."
+- name: "design / ux"
+  color: "#5319e7"
+  description: "How things look, feel, and behave - making it human-friendly."
+- name: "discussion"
+  color: "#bfdadc"
+  description: "Not an issue, not a bug – just talking things through."
+- name: "idea"
+  color: "#a33fa3"
+  description: "A spark of inspiration – could become something big."
+- name: "chore"
+  color: "#cfd3d7"
+  description: "Boring but necessary work (like cleaning up after the party)."
+- name: "tests"
+  color: "#28a745"
+  description: "Unit, integration, end-to-end - because bugs fear tests."
 - name: "question"
-  color: d876e3
-  description: "Further information is requested."
-
-- name: "in progress"
-  color: fbca04
-  description: "Issue is currently being resolved by a developer."
-- name: "stale"
-  color: fef2c0
-  description: "There has not been activity on this issue or PR for quite some time."
-- name: "no stale"
-  color: fef2c0
-  description: "This issue or PR is exempted from the stable bot."
-- name: "wontfix"
-  color: ffffff
-  description: "Further information is requested."
-
+  color: "#a33fa3"
+  description: "Wait, what? Somebody needs answers before we move on."
 - name: "security"
-  color: ee0701
-  description: "Marks a security issue that needs to be resolved ASAP."
-- name: "incomplete"
-  color: fef2c0
-  description: "Marks a PR or issue that is missing information."
-- name: "invalid"
-  color: fef2c0
-  description: "Marks a PR or issue that is missing information."
+  color: "#d73a4a"
+  description: "🔒 Potential hole in the armor - fix it before the bad guys find it."
 
-- name: "good first issue"
-  color: 0e8a16
-  description: "Good first issue for people wanting to contribute to the project."
-- name: "help wanted"
-  color: 0e8a16
-  description: "We need some extra helping hands or expertise in order to resolve this."
-
-- name: "priority critical"
-  color: ee0701
-  description: "This should be dealt with ASAP. Not fixing this issue would be a serious error."
-- name: "priority high"
-  color: b60205
-  description: "After critical issues are fixed, these should be dealt with before any further issues."
-- name: "priority medium"
-  color: 0e8a16
-  description: "This issue may be useful, and needs some attention."
-- name: "priority low"
-  color: e4ea8a
-  description: "Nice addition, maybe... someday..."
-
-- name: "major"
-  color: b60205
-  description: "This PR causes a major version bump in the version number."
-- name: "minor"
-  color: 0e8a16
-  description: "This PR causes a minor version bump in the version number."
-  
+# Ticket status
+- name: "in progress"
+  color: "#fbca04"
+  description: "A developer is on the case - work is happening right now."
+- name: "stale"
+  color: "#fef2c0"
+  description: "This issue has gathered dust. Maybe it's time to say goodbye?"
+- name: "no stale"
+  color: "#fef2c0"
+  description: "Hands off, bot. This one stays alive."
+- name: "wontfix"
+  color: "#cfd3d7"
+  description: "We see it, we understand it... but nope, not gonna fix it."
+- name: "blocked"
+  color: "#000000"
+  description: "Can’t move forward until something else is resolved."
 - name: "duplicate"
-  color: cfd3d7
-  description: "This issue or pull request already exists."
-  
+  color: "#cfd3d7"
+  description: "Seen it already - let's not reinvent the wheel."
+- name: "incomplete"
+  color: "#fef2c0"
+  description: "Missing puzzle pieces - needs more info or work."
+- name: "invalid"
+  color: "#cfd3d7"
+  description: "Nope. This one doesn't check out."
+
+# Contribution
+- name: "good first issue"
+  color: "#28a745"
+  description: "A gentle warm-up for new contributors."
+- name: "help wanted"
+  color: "#a2eeef"
+  description: "Calling all heroes - we need reinforcements!"
 - name: "hacktoberfest"
-  color: ea0192
-  description: "Takes part in Hacktoberfest."
+  color: "#ea4aaa"
+  description: "🌱 This issue is Hacktoberfest-approved."
+
+# Priority
+- name: "priority critical"
+  color: "#d73a4a"
+  description: "🔥 Drop everything. This one is top of the food chain."
+- name: "priority high"
+  color: "#b60205"
+  description: "Very important. Fix after the fires are out."
+- name: "priority medium"
+  color: "#fbca04"
+  description: "Worthy of attention - not urgent, but not ignorable."
+- name: "priority low"
+  color: "#fef2c0"
+  description: "Nice to have. Maybe in a rainy afternoon sprint."
+- name: "backlog"
+  color: "#bfdadc"
+  description: "Good idea, but it’s sitting patiently in the waiting room."
+
+# Version information
+- name: "major"
+  color: "#b60205"
+  description: "Brace yourself: this one bumps the major version number."
+- name: "minor"
+  color: "#28a745"
+  description: "Adds a little something - version number grows a bit."
+- name: "breaking change"
+  color: "#d73a4a"
+  description: "A change so big it might break hearts (and existing code)."
+
+# Special labels
+- name: "sponsor 💖"
+  color: "#ea4aaa"
+  description: "This contributor supports the project – much love!"

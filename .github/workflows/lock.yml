@@ -2,8 +2,12 @@ name: Lock
 
 on:
   schedule:
-    - cron: "0 9 * * *"
+    - cron: "0 7 * * *"
   workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
 
 jobs:
   lock:

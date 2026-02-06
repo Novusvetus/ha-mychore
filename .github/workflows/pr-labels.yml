@@ -4,6 +4,9 @@ on:
   pull_request:
     types: [opened, labeled, unlabeled, synchronize]
 
+permissions:
+  pull-requests: write
+
 jobs:
   pr_labels:
     name: 🏭 Verify
@@ -14,6 +17,6 @@ jobs:
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           valid-labels: >-
-            breaking change, bug, documentation, enhancement,
-            refactor, performance, new feature, maintenance, ci, dependencies, question
+            bug, documentation, enhancement, refactor, performance, new feature, maintenance,
+            ci, dependencies, design / ux, discussion, idea, chore, tests, question, security
           disable-reviews: true
