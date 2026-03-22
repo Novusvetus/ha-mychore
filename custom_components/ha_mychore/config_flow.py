@@ -7,7 +7,8 @@ import homeassistant.helpers.config_validation as cv
 
 from .const import DOMAIN
 
-class MyChoreConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+
+class MyChoreConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):  # type: ignore
     """Handle a config flow for ha-mychore."""
 
     VERSION = 1
@@ -32,12 +33,18 @@ class MyChoreConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         """Get the options flow."""
         return MyChoreOptionsFlow(config_entry)
 
+
 class MyChoreOptionsFlow(config_entries.OptionsFlow):
     """Handle options flow for ha-mychore."""
 
     def __init__(self, config_entry):
         """Initialize options flow."""
         self.config_entry = config_entry
+
+    @property
+    def supports_options(self):
+        """Return if options are supported."""
+        return True
 
     async def async_step_init(self, user_input=None):
         """Manage the options."""

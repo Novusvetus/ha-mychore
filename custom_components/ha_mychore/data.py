@@ -3,6 +3,9 @@
 from datetime import datetime
 from homeassistant.helpers.storage import Store
 
+from .const import DOMAIN
+
+
 class ChoreData:
     """Class to handle chore data and persistence."""
 

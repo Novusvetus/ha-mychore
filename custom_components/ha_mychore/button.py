@@ -6,11 +6,13 @@ from homeassistant.components.button import ButtonEntity
 from .const import DOMAIN
 from .data import get_chore_data
 
+
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up the button platform."""
     chore_data = await get_chore_data(hass, config_entry, DOMAIN)
     button = ChoreButton(chore_data, config_entry)
     async_add_entities([button])
+
 
 class ChoreButton(ButtonEntity):
     """Button entity for marking a chore as done."""

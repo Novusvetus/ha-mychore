@@ -1,6 +1,6 @@
 """Init for ha-mychore integration."""
 
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
@@ -8,6 +8,7 @@ from homeassistant.helpers.event import async_track_time_change
 
 from .const import DOMAIN
 from .data import ChoreData
+
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up ha-mychore from a config entry."""
@@ -22,9 +23,11 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     return True
 
+
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Unload a config entry."""
     return await hass.config_entries.async_unload_platforms(entry, ["sensor", "button"])
+
 
 async def daily_chore_update(hass, now):
     """Update due_today for all chores daily at midnight."""

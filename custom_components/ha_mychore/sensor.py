@@ -9,6 +9,7 @@ from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
 from .const import DOMAIN
 from .data import get_chore_data
 
+
 async def async_setup_platform(
     _hass: HomeAssistant,
     _config: ConfigType,
@@ -17,13 +18,14 @@ async def async_setup_platform(
 ) -> None:
     """Set up the sensor platform (not used with config_flow)."""
     # This is for YAML config, but since we have config_flow, maybe not needed
-    pass
+
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up the sensor platform."""
     chore_data = await get_chore_data(hass, config_entry, DOMAIN)
     sensor = ChoreSensor(chore_data, config_entry)
     async_add_entities([sensor])
+
 
 class ChoreSensor(SensorEntity):
     """Sensor entity for showing chore overdue percentage."""
