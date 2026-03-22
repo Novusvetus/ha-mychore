@@ -31,6 +31,7 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
 async def daily_chore_update(hass, now):
     """Update due_today for all chores daily at midnight."""
+    # pylint: disable=too-many-locals,too-many-branches
     if DOMAIN not in hass.data:
         return
 
