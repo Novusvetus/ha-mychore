@@ -35,3 +35,12 @@ class ChoreData:
 
     def add_listener(self, listener):
         self._listeners.append(listener)
+
+async def get_chore_data(hass, config_entry, domain):
+    entry_id = config_entry.entry_id
+    if domain not in hass.data:
+        hass.data[domain] = {}
+    if entry_id not in hass.data[domain]:
+        hass.data[domain][entry_id] = ChoreData(hass, entry_id)
+        await hass.data[domain][entry_id].async_load()
+    return hass.data[domain][entry_id]

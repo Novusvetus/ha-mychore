@@ -5,7 +5,7 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
 
 from .const import DOMAIN
-from .data import ChoreData
+from .data import ChoreData, get_chore_data
 
 async def async_setup_platform(
     hass: HomeAssistant,
@@ -17,13 +17,7 @@ async def async_setup_platform(
     pass
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
-    entry_id = config_entry.entry_id
-    if DOMAIN not in hass.data:
-        hass.data[DOMAIN] = {}
-    if entry_id not in hass.data[DOMAIN]:
-        hass.data[DOMAIN][entry_id] = ChoreData(hass, entry_id)
-        await hass.data[DOMAIN][entry_id].async_load()
-    chore_data = hass.data[DOMAIN][entry_id]
+    chore_data = await get_chore_data(hass, config_entry, DOMAIN)
     sensor = ChoreSensor(chore_data, config_entry)
     async_add_entities([sensor])
 
