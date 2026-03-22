@@ -1,3 +1,5 @@
+# Contributing to this repository
+
 ## Bugtracker
 
 Bugs are tracked in the issues section of this repository on GitHub.

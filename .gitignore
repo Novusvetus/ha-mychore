@@ -1,5 +1,6 @@
 # Dependency directory
 node_modules
+vendor/
 
 # Rest pulled from https://github.com/github/gitignore/blob/master/Node.gitignore
 # Logs
@@ -99,7 +100,6 @@ lib/**/*
 *.bak
 *.swp
 *~
-composer.lock
 .env
 
 # Ignore by common IDEs used directories/files
@@ -121,3 +121,15 @@ nbproject
 # Files by Build tool
 .vagrant
 Vagrantfile
+
+# Super-Linter files
+.coverage
+.github-personal-access-token
+.lintr
+.terraform
+custom-super-linter-output-directory-name/
+github-step-summary.md
+github_conf
+super-linter-github-actions-step-summary-output*
+super-linter-output/
+super-linter.report
