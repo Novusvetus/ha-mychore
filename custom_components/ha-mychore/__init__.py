@@ -69,11 +69,10 @@ async def daily_chore_update(hass, now):
     setWorth = True
     for chore_data, points, _ in chores:
         cumulative += points
+        chore_data.set_due_today(setWorth)
         if cumulative < target:
-            chore_data.set_due_today(setWorth)
+            setWorth = True
         else if cumulative == target:
-            chore_data.set_due_today(setWorth)
             setWorth = False
         else:
-            chore_data.set_due_today(setWorth)
             setWorth = False
