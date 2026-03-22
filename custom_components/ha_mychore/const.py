@@ -1,3 +1,3 @@
 """Constants for ha-mychore integration."""
 
-DOMAIN = "novusvetus-ha-mychore"
+DOMAIN = "ha_mychore"
