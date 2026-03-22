@@ -65,4 +65,5 @@ class ChoreSensor(SensorEntity):
             "last_done": self.chore_data.last_done.isoformat() if self.chore_data.last_done else None,
             "points": self._points,
             "interval_hours": self._interval_hours,
+            "due_today": self.chore_data.due_today,
         }

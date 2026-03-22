@@ -18,7 +18,8 @@
         "title": "Options",
         "data": {
           "points": "Points",
-          "interval_hours": "Interval in hours"
+          "interval_hours": "Interval in hours",
+          "daily_target_points": "Daily target points"
         }
       }
     }

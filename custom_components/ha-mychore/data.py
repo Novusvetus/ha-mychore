@@ -7,6 +7,7 @@ class ChoreData:
         self.entry_id = entry_id
         self.store = Store(hass, "ha-mychore", f"{entry_id}.json")
         self.last_done = None
+        self.due_today = False
         self._listeners = []
         self._loaded = False
 
@@ -24,6 +25,11 @@ class ChoreData:
         self.last_done = dt
         # Schedule save
         self.hass.async_create_task(self.async_save())
+        for listener in self._listeners:
+            listener()
+
+    def set_due_today(self, value):
+        self.due_today = value
         for listener in self._listeners:
             listener()
 
