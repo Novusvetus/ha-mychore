@@ -1,0 +1,38 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Chore einrichten",
+        "data": {
+          "name": "Name",
+          "points": "Punkte",
+          "interval_hours": "Intervall in Stunden"
+        }
+      }
+    },
+    "flow_title": "My Chore: {name}"
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Optionen",
+        "data": {
+          "points": "Punkte",
+          "interval_hours": "Intervall in Stunden"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "chore_percentage": {
+        "name": "{name} Prozentsatz"
+      }
+    },
+    "button": {
+      "chore_button": {
+        "name": "{name} Button"
+      }
+    }
+  }
+}

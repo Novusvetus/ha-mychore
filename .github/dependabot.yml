@@ -1,5 +1,23 @@
 version: 2
 updates:
+  # Maintain dependencies for devcontainers
+  - package-ecosystem: "devcontainers"
+    directory: "/"
+    schedule:
+      interval: "cron"
+      cronjob: "0 16 * * 5"
+      timezone: "Europe/Berlin"
+    assignees:
+      - "novusvetus"
+    reviewers:
+      - "novusvetus"
+    labels:
+      - "maintenance"
+      - "dependencies"
+    open-pull-requests-limit: 10
+    cooldown:
+      default-days: 7
+
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -17,3 +35,24 @@ updates:
     open-pull-requests-limit: 10
     cooldown:
       default-days: 7
+
+  # Maintain dependencies for PIP
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "cron"
+      cronjob: "0 16 * * 5"
+      timezone: "Europe/Berlin"
+    assignees:
+      - "novusvetus"
+    reviewers:
+      - "novusvetus"
+    labels:
+      - "maintenance"
+      - "dependencies"
+    open-pull-requests-limit: 10
+    cooldown:
+      default-days: 7
+    ignore:
+      # Dependabot should not update Home Assistant as that should match the homeassistant key in hacs.json
+      - dependency-name: "homeassistant"
