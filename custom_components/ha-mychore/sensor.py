@@ -10,10 +10,10 @@ from .const import DOMAIN
 from .data import get_chore_data
 
 async def async_setup_platform(
-    hass: HomeAssistant,
-    config: ConfigType,
-    async_add_entities: AddEntitiesCallback,
-    discovery_info: DiscoveryInfoType = None,
+    _hass: HomeAssistant,
+    _config: ConfigType,
+    _async_add_entities: AddEntitiesCallback,
+    _discovery_info: DiscoveryInfoType = None,
 ) -> None:
     """Set up the sensor platform (not used with config_flow)."""
     # This is for YAML config, but since we have config_flow, maybe not needed
@@ -67,8 +67,11 @@ class ChoreSensor(SensorEntity):
     @property
     def extra_state_attributes(self):
         """Return the state attributes."""
+        last_done_str = (
+            self.chore_data.last_done.isoformat() if self.chore_data.last_done else None
+        )
         return {
-            "last_done": self.chore_data.last_done.isoformat() if self.chore_data.last_done else None,
+            "last_done": last_done_str,
             "points": self._points,
             "interval_hours": self._interval_hours,
             "due_today": self.chore_data.due_today,

@@ -1,9 +1,10 @@
 """Init for ha-mychore integration."""
 
+from datetime import datetime, timedelta
+
 from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.event import async_track_time_change
-from datetime import datetime, timedelta
 
 from .const import DOMAIN
 from .data import ChoreData
@@ -71,14 +72,14 @@ async def daily_chore_update(hass, now):
 
     # Mark due_today
     cumulative = 0
-    setWorth = True
+    set_worth = True
 
     for chore_data, points, _ in chores:
         cumulative += points
-        chore_data.set_due_today(setWorth)
+        chore_data.set_due_today(set_worth)
         if cumulative < target:
-            setWorth = True
+            set_worth = True
         elif cumulative == target:
-            setWorth = False
+            set_worth = False
         else:
-            setWorth = False
+            set_worth = False
