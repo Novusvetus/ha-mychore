@@ -1,3 +1,5 @@
+"""Config flow for ha-mychore integration."""
+
 import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.core import callback
@@ -6,9 +8,12 @@ import homeassistant.helpers.config_validation as cv
 from .const import DOMAIN
 
 class MyChoreConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+    """Handle a config flow for ha-mychore."""
+
     VERSION = 1
 
     async def async_step_user(self, user_input=None):
+        """Handle the initial step."""
         if user_input is not None:
             return self.async_create_entry(title=user_input["name"], data=user_input)
 
@@ -24,20 +29,28 @@ class MyChoreConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     @staticmethod
     @callback
     def async_get_options_flow(config_entry):
+        """Get the options flow."""
         return MyChoreOptionsFlow(config_entry)
 
 class MyChoreOptionsFlow(config_entries.OptionsFlow):
+    """Handle options flow for ha-mychore."""
+
     def __init__(self, config_entry):
+        """Initialize options flow."""
         self.config_entry = config_entry
 
     async def async_step_init(self, user_input=None):
+        """Manage the options."""
         if user_input is not None:
             return self.async_create_entry(title="", data=user_input)
 
         return self.async_show_form(
             step_id="init",
             data_schema=vol.Schema({
-                vol.Required("points", default=self.config_entry.data.get("points", 1)): cv.positive_int,
-                vol.Required("interval_hours", default=self.config_entry.data.get("interval_hours", 24)): cv.positive_int,
+                vol.Required("points", default=self.config_entry.data.get("points", 1)):
+                    cv.positive_int,
+                vol.Required("interval_hours",
+                             default=self.config_entry.data.get("interval_hours", 24)):
+                    cv.positive_int,
             }),
         )

@@ -1,11 +1,15 @@
+"""Init for ha-mychore integration."""
+
 from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.event import async_track_time_change
 from datetime import datetime, timedelta
 
 from .const import DOMAIN
+from .data import ChoreData
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
+    """Set up ha-mychore from a config entry."""
     await hass.config_entries.async_forward_entry_setups(entry, ["sensor", "button"])
 
     # Schedule daily job if not already
@@ -18,6 +22,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     return True
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
+    """Unload a config entry."""
     return await hass.config_entries.async_unload_platforms(entry, ["sensor", "button"])
 
 async def daily_chore_update(hass, now):
@@ -67,12 +72,13 @@ async def daily_chore_update(hass, now):
     # Mark due_today
     cumulative = 0
     setWorth = True
+
     for chore_data, points, _ in chores:
         cumulative += points
         chore_data.set_due_today(setWorth)
         if cumulative < target:
             setWorth = True
-        else if cumulative == target:
+        elif cumulative == target:
             setWorth = False
         else:
             setWorth = False
